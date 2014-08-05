@@ -1,0 +1,31 @@
+<?php
+$this->i18nTheme();
+$this->bootstrap();
+$this->css($this->assetTheme('css/style.css'));
+
+// Explicitly load favicon
+// @see http://en.wikipedia.org/wiki/Favicon
+$this->headLink(array(
+    'rel'   => 'shortcut icon',
+    'href'  => $this->favicon()
+));
+// Load google analytics code
+$this->ga();
+?>
+<!DOCTYPE HTML>
+<html lang="<?php echo $locale; ?>">
+<head>
+    <meta charset="<?php echo $charset; ?>">
+</head>
+<body id="pi-<?php echo Pi::service('module')->current(); ?>" class="pi-locale-<?php echo $locale; ?>">
+
+    <div class="container pi-main-container">
+
+        <!-- Flash messenger -->
+        <?php include $this->template('flash-messenger'); ?>
+
+        <?php if (!empty($content)) { ?><div class="pi-zone-module"><?php echo $content; ?></div><?php } ?>
+    </div>
+
+</body>
+</html>

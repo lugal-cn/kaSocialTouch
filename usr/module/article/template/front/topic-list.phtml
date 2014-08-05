@@ -1,0 +1,49 @@
+<?php
+    $this->css(array(
+        $this->assetModule('script/block.css'),
+    ));
+?>
+
+<div class="">
+    <div class="clearfix">
+        <h3 class="pi-block-title"><?php echo $this->escape($title); ?></h3>
+        <div class="text-muted">
+            <span style="padding-right: 10px"><?php echo $this->escape($count) . __(' articles'); ?></span>
+            <span style="padding-right: 10px"><?php echo sprintf(__('Created at ') . _date($topic['time_create'])); ?></span>
+            <span style="padding-right: 10px"><?php echo $lastAdded
+                ? sprintf(__('Last added at ') . _date($lastAdded))
+                : ''; ?></span>
+        </div>
+    </div>
+    <hr>
+    <div class="topic-article-list">
+        <ul class="list pi-list" style="margin-left: 5px;">
+            <?php $index = 0 ?>
+            <?php foreach ($articles as $row) { ?>
+                <li class="text-muted">
+                    <div class="list-hover">
+                        <span class="pull-right article-size12">
+                            <?php echo _date($row['time_publish']); ?>
+                        </span>
+                        <a class="article-list-title" target="_blank" href="<?php echo $this->escape($row['url']); ?>"
+                           title="<?php echo $this->escape($row['subject']); ?>">
+                               <?php echo $this->escape($row['subject']); ?>
+                        </a>
+                    </div>
+                </li>
+                <?php if (!(++$index % 5)) { ?>
+                    <hr>
+                <?php } ?>    
+            <?php } ?>   
+        </ul>
+        <?php echo $this->paginationControl(
+            $paginator,
+            'Sliding',
+            'paginator.phtml',
+            array('class' => 'pagination-centered'))
+        ?>
+    </div>
+</div>
+<script>
+    $(".topic-article-list").find(".dashed:last").css("height", "0");
+</script>

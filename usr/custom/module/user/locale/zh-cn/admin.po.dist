@@ -1,0 +1,97 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Pi-user\n"
+"POT-Creation-Date: 2014-04-27 18:51+0800\n"
+"PO-Revision-Date: 2014-04-27 22:19+0800\n"
+"Last-Translator: Taiwen Jiang <taiwenjiang@tsinghua.org.cn>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: _a;_t\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: c:\\Code\\pi\\usr\\custom\\module\\user\n"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:25
+msgid "First Name"
+msgstr "名"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:31
+msgid "Last Name"
+msgstr "姓"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:37
+msgid "Language"
+msgstr "语言"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:44
+msgid "Mobile phone"
+msgstr "手机号码"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:62
+msgid "Telephone"
+msgstr "电话号码"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:83
+msgid "Education"
+msgstr "教育经历"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:91
+msgid "School name"
+msgstr "学校"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:97
+msgid "Department"
+msgstr "院系"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:103
+msgid "Major"
+msgstr "专业"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:109
+msgid "Degree"
+msgstr "学历"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:115
+#: c:\Code\pi\usr\custom\module\user/config/user.php:187
+msgid "Start time"
+msgstr "开始时间"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:121
+#: c:\Code\pi\usr\custom\module\user/config/user.php:193
+msgid "End time"
+msgstr "结束时间"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:124
+#: c:\Code\pi\usr\custom\module\user/config/user.php:177
+msgid "Description"
+msgstr "简介"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:139
+msgid "Work"
+msgstr "工作经历"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:147
+msgid "Company name"
+msgstr "公司"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:153
+msgid "Work Department"
+msgstr "部门"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:159
+msgid "Industry"
+msgstr "行业"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:165
+msgid "Sector"
+msgstr "领域"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:168
+msgid "Job position"
+msgstr "工作职位"
+
+#: c:\Code\pi\usr\custom\module\user/config/user.php:171
+msgid "Job title"
+msgstr "职务职称"

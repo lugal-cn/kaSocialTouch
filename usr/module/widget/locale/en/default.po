@@ -1,0 +1,62 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Pi-widget\n"
+"POT-Creation-Date: 2014-03-03 14:21+0800\n"
+"PO-Revision-Date: 2014-03-03 14:21+0800\n"
+"Last-Translator: Taiwen Jiang <taiwenjiang@tsinghua.org.cn>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: C:\\code\\pi\\usr\\module\\widget\n"
+
+#: C:\code\pi\usr\module\widget/src/Form/BlockCarouselForm.php:42
+#: C:\code\pi\usr\module\widget/src/Form/BlockStaticForm.php:55
+#: C:\code\pi\usr\module\widget/src/Form/BlockTabForm.php:41
+msgid "Title"
+msgstr ""
+
+#: C:\code\pi\usr\module\widget/src/Form/BlockCarouselForm.php:53
+#: C:\code\pi\usr\module\widget/src/Form/BlockStaticForm.php:66
+#: C:\code\pi\usr\module\widget/src/Form/BlockTabForm.php:52
+msgid "Unique name"
+msgstr ""
+
+#: C:\code\pi\usr\module\widget/src/Form/BlockCarouselForm.php:64
+#: C:\code\pi\usr\module\widget/src/Form/BlockStaticForm.php:77
+#: C:\code\pi\usr\module\widget/src/Form/BlockTabForm.php:63
+msgid "Description"
+msgstr ""
+
+#: C:\code\pi\usr\module\widget/src/Form/BlockCarouselForm.php:74
+msgid "Template"
+msgstr ""
+
+#: C:\code\pi\usr\module\widget/src/Form/BlockCarouselForm.php:109
+#: C:\code\pi\usr\module\widget/src/Form/BlockStaticForm.php:135
+#: C:\code\pi\usr\module\widget/src/Form/BlockTabForm.php:99
+msgid "Submit"
+msgstr ""
+
+#: C:\code\pi\usr\module\widget/src/Form/BlockStaticForm.php:102
+msgid "Content"
+msgstr ""
+
+#: C:\code\pi\usr\module\widget/src/Form/Element/CarouselTemplate.php:20
+msgid "Bootstrap slide"
+msgstr ""
+
+#: C:\code\pi\usr\module\widget/src/Form/Element/CarouselTemplate.php:21
+msgid "jCarousel riding Carousel"
+msgstr ""
+
+#: C:\code\pi\usr\module\widget/src/Form/Element/CarouselTemplate.php:22
+msgid "Parallax Content Slider"
+msgstr ""
+
+#: C:\code\pi\usr\module\widget/src/Form/Element/CarouselTemplate.php:43
+msgid "Custom: "
+msgstr ""

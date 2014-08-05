@@ -1,0 +1,203 @@
+<?php
+/**
+ * Pi Engine (http://pialog.org)
+ *
+ * @link            http://code.pialog.org for the Pi Engine source repository
+ * @copyright       Copyright (c) Pi Engine http://pialog.org
+ * @license         http://pialog.org/license.txt BSD 3-Clause License
+ */
+
+/**
+ * User profile and resource specs
+ *
+ * @see Pi\Application\Installer\Resource\User
+ * @author Taiwen Jiang <taiwenjiang@tsinghua.org.cn>
+ */
+$customConfig = array(
+    // Fields
+    'field'     => array(
+
+        // Profile fields
+
+        // Profile: first_name
+        'first_name'  => array(
+            'name'  => 'first_name',
+            'title' => _a('First Name'),
+        ),
+
+        // Profile: last_name
+        'last_name'  => array(
+            'name'  => 'last_name',
+            'title' => _a('Last Name'),
+        ),
+
+        // Profile: Language
+        'language'  => array(
+            'name'  => 'language',
+            'title' => _a('Language'),
+            'edit'  => 'locale',
+        ),
+
+        // Profile: mobile phone number
+        'mobile'      => array(
+            'name'      => 'mobile',
+            'title'     => _a('Mobile phone'),
+            // Edit element specs
+            'edit'      => array(
+                'validators'    => array(
+                    array(
+                        'name'      => 'Zend\I18n\Validator\PhoneNumber',
+                        'options'   => array(
+                            'country'       => 'cn',
+                            'allowed_types' => array('mobile'),
+                        ),
+                    ),
+                ),
+            ),
+        ),
+
+        // Profile: phone
+        'phone'  => array(
+            'name'  => 'phone',
+            'title' => _a('Telephone'),
+            // Edit element specs
+            'edit'      => array(
+                'validators'    => array(
+                    array(
+                        'name'      => 'Zend\I18n\Validator\PhoneNumber',
+                        'options'   => array(
+                            'country'       => 'cn',
+                            'allowed_types' => array('general'),
+                        ),
+                    ),
+                ),
+            ),
+        ),
+
+
+        // Compound fields
+
+        // Compound: Education experiences
+        'education'  => array(
+            'name'  => 'education',
+            'title' => _a('Education'),
+
+            // Custom handler
+            'handler'   => 'Custom\User\Field\Education',
+
+            // Fields
+            'field' => array(
+                'school'    => array(
+                    'title' => _a('School name'),
+                    'edit' => array(
+                        'required' => true,
+                    ),
+                ),
+                'department'    => array(
+                    'title' => _a('Department'),
+                    'edit' => array(
+                        'required' => true,
+                    ),
+                ),
+                'major'    => array(
+                    'title' => _a('Major'),
+                    'edit' => array(
+                        'required' => true,
+                    ),
+                ),
+                'degree'    => array(
+                    'title' => _a('Degree'),
+                    'edit' => array(
+                        'required' => true,
+                    ),
+                ),
+                'start'    => array(
+                    'title' => _a('Start time'),
+                    'edit' => array(
+                        'required' => true,
+                    ),
+                ),
+                'end'    => array(
+                    'title' => _a('End time'),
+                ),
+                'description'   => array(
+                    'title' => _a('Description'),
+                    'edit'  => array(
+                        'element' => 'textarea',
+                        'attributes' => array(
+                            'rows'    => 4,
+                            'class'   => 'input-block-level',
+                        ),
+                    ),
+                ),
+            ),
+        ),
+
+        // Compound: Profession experiences
+        'work'      => array(
+            'name'  => 'work',
+            'title' => _a('Work'),
+            'is_required' => true,
+            // Custom handler
+            'handler'   => 'Custom\User\Field\Work',
+
+            // Fields
+            'field' => array(
+                'company'    => array(
+                    'title' => _a('Company name'),
+                    'edit' => array(
+                        'required' => true,
+                    ),
+                ),
+                'department'    => array(
+                    'title' => _a('Work Department'),
+                    'edit' => array(
+                        'required' => true,
+                    ),
+                ),
+                'industry'    => array(
+                    'title' => _a('Industry'),
+                    'edit' => array(
+                        'required' => true,
+                    ),
+                ),
+                'sector'    => array(
+                    'title' => _a('Sector'),
+                ),
+                'title'    => array(
+                    'title' => _a('Job title'),
+                    'edit' => array(
+                        'required' => true,
+                    ),
+                ),
+                'description'   => array(
+                    'title' => _a('Description'),
+                    'edit'  => array(
+                        'element' => 'textarea',
+                        'attributes' => array(
+                            'rows'    => 4,
+                            'class'   => 'input-block-level',
+                        ),
+                    ),
+                ),
+                'start'    => array(
+                    'title' => _a('Start time'),
+                    'edit' => array(
+                        'required' => true,
+                    ),
+                ),
+                'end'    => array(
+                    'title' => _a('End time'),
+                ),
+            ),
+        ),
+    ),
+);
+
+
+$config = include Pi::path('module/user/config/user.php');
+foreach ($customConfig as $key => $cfg) {
+    $config[$key] = array_merge($config[$key], $cfg);
+}
+
+return $config;

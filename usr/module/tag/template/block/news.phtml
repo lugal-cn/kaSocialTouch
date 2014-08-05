@@ -1,0 +1,10 @@
+<div>
+    <ul>
+        <?php foreach ($block['tags'] as $tag) { ?>
+        <li>
+            <?php echo $tag['link']; ?>
+            <span class="pull-right"><?php echo $tag['time']; ?></span>
+        </li>
+        <?php } ?>
+    </ul>
+</div>

@@ -1,0 +1,47 @@
+Page module changelog
+
+v1.2.1 April 24th, 2014
+=============================
+1. Fix for page specific dress-up
+
+v1.2.0 February 27th, 2014
+=============================
+1. Add support for menu
+
+
+v1.1.0 January 10th, 2014
+=============================
+1. Add Text API
+2. Add seo_title, seo_keywords, seo_description
+3. Fix install/meta.txt
+4. Add module config 
+5. Improce page API
+6. Improve templates
+7. Improve generate name / slug
+8. Improve update script
+9. Fix bug on render markdown pages
+10. Add support for PHTML content
+
+
+September 28th, 2012
+=============================
+1. Versioned at 1.0.0-beta.4
+2. Modified navigation
+
+September 10th, 2012
+=============================
+1. Demo for adding table 'stats', not used yet
+2. Demo for dropping not used table 'stats'
+3. Changed time field to time_created
+4. Added field time_updated
+5. Added field clicks
+6. Added click counting on view page
+
+
+August 25th, 2012
+=============================
+1 Created page module
+
+
+
+Taiwen Jiang

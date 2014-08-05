@@ -1,0 +1,19 @@
+<style>
+    .block-noborder {
+        border: 0;
+        box-shadow: 0 0 0;
+        border-radius: 0 0 0 0;
+    }
+</style>
+<div class="article-search row" style="margin: 0">
+    <form action="<?php echo $this->escape($block['url']); ?>" method="post" style="margin: 0; width: 100%; padding: 0" class="navbar-form navbar-left">
+        <div class="form-group" style="width: 81%">
+            <input name="keyword" class="form-control" type="text" placeholder="<?php echo _b('Keyword'); ?>">
+        </div>
+        <button class="btn" style="width: 60px" type="submit"><?php echo _b('Search'); ?></button>
+    </form>
+</div>
+
+<script>
+    $('.article-search').parent().addClass('block-nopadding');
+</script>

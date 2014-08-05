@@ -1,0 +1,256 @@
+<?php
+    $this->css($this->assetModule('front/front.css'));
+?>
+<div class="row">
+    <?php include $this->template('./profile-sidebar.phtml'); ?>
+    <div class="col-md-9">
+        <div class="user-page-header">
+            <h3><?php _e('Account settings'); ?></h3>
+            <div class="text-muted"><?php _e('Basic settings'); ?></div>
+        </div>
+        
+        <?php include $this->templateComponent('form'); ?>
+
+
+    </div>
+</div>
+<form class="modal fade user-js-confirm" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content form-horizontal">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title"><?php _e('Verify identity'); ?></h4>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info">
+                    <?php _e('Input password to verify your identity for account changes.'); ?>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label" for="password">
+                        <?php _e('Password'); ?>
+                    </label>
+                    <div class="col-md-5">
+                        <input type="password" class="form-control user-js-confirm-password" name="password">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="submit"><?php _e('Submit'); ?></button>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    (function($) {
+        var userAccountIndex = {
+            options: {},
+
+            $: function(selector) {
+                return this.$el.find(selector);
+            },
+
+            init: function(opts) {
+                $.extend(this.options, opts);
+                this.cacheElements();
+                this.bindEvents();
+                this.isEmailValid = false;
+                this.isNameValid = false;
+                this.isValid();
+                this.emailInitVal = $.trim(this.$email.val());
+                this.nameInitVal = $.trim(this.$name.val());
+                this.uidVal      = $.trim(this.$el.find('[name=uid]').val());
+                this.checkEmailRequest = null;
+                this.checkNameRequest = null;
+            },
+
+            cacheElements: function() {
+                this.$el = $('#account');
+                this.$submit = this.$('[name=submit]');
+                this.$email = this.$('[name=email]');
+                this.$name = this.$('[name=name]');
+                this.$confirm = $('.user-js-confirm');
+                this.$confirmPassword = $('.user-js-confirm-password');
+                this.$confirmBtn = $('.user-js-confirm-btn');
+            },
+
+            bindEvents: function() {
+                this.$el.on('submit', $.proxy(this.submitAction, this));
+                this.$confirm.on('submit', $.proxy(this.confirmSubmitAction, this));
+                this.$confirm.on('show', $.proxy(this.modalShowAction, this));
+                this.$confirm.on('hide', $.proxy(this.modalHideAction, this));
+                this.$confirmPassword.focus(this.focusAction);
+                this.$email.on('keyup blur', $.proxy(this.emailVerifyAction, this)).focus(this.focusAction);
+                this.$name.on('keyup blur', $.proxy(this.nameVerifyAction, this)).focus(this.focusAction);
+            },
+
+            submitAction: function(e) {
+                e.preventDefault();
+                this.$confirm.modal('show');
+            },
+
+            confirmSubmitAction: function(e) {
+                e.preventDefault();
+                this.$confirmBtn.addClass('disabled').attr('disabled', 'disabled');
+                var passwordVal = $.trim(this.$confirmPassword.val());
+
+                $.getJSON(this.options.confirmUrl, { 'credential': passwordVal }, $.proxy(function(result) {
+                    if (result.status) {
+                        var emailVal = $.trim(this.$email.val());
+                        var nameVal = $.trim(this.$name.val());
+
+                        $.post(this.options.accountIndexUrl, { 'email': emailVal, 'name': nameVal, 'uid': this.uidVal}, $.proxy(function(result) {
+                            this.$email.next().remove();
+                            this.$name.next().remove();
+
+                            if (result.email_error === 0) {
+                                this.emailInitVal = result.email_value;
+                                this.$email.after('<span class="help-block">' + result.email_message + '</span>');
+                            }
+
+                            if (result.email_error === 1) {
+                                this.emailReset();
+                                this.$email.after('<span class="help-block">' + result.email_message + '</span>').closest('.control-group').addClass('error');
+                            }
+
+                            if (result.name_error === 0) {
+                                this.nameInitVal = result.name_value;
+                                this.$name.after('<span class="help-block">' + result.name_message + '</span>');
+                            }
+
+                            if (result.name_error === 1) {
+                                this.nameReset();
+                                this.$name.after('<span class="help-block">' + result.name_message + '</span>').closest('.control-group').addClass('error');
+                            }
+
+                            this.$confirm.modal('hide');
+
+                        }, this), 'json');
+                    } else {
+                        this.confirmReset();
+                        this.$confirmPassword.next().remove();
+                        this.$confirmPassword.after('<span class="help-inline">' + result.message + '</span>').closest('.control-group').addClass('error');
+                    }
+                }, this));
+            },
+
+            nameReset: function() {
+                this.$name.val(this.nameInitVal);
+            },
+
+            emailReset: function() {
+                this.$email.val(this.emailInitVal);
+            },
+
+            modalHideAction: function() {
+                this.isEmailValid = false;
+                this.isNameValid = false;
+                this.emailReset();
+                this.nameReset();
+                //this.$submit.addClass('disabled').attr('disabled', 'disabled');
+            },
+
+            modalShowAction: function() {
+                this.confirmReset();
+            },
+
+            confirmReset: function() {
+                this.$confirmPassword.val('');
+                this.$confirmPassword.closest('.control-group').removeClass('error').find('.help-inline').remove();
+                this.$confirmBtn.removeClass('disabled').removeAttr('disabled');
+            },
+
+            focusAction: function() {
+                $(this).closest('.control-group').removeClass('error').find('.help-inline, .help-block').remove();
+            },
+
+            emailVerifyAction: function() {
+                var emailVal = $.trim(this.$email.val());
+                switch ( true ) {
+                    case !/^[0-9a-z_][_.0-9a-z-]{0,31}@([0-9a-z][0-9a-z-]{0,30}\.){1,4}[a-z]{2,4}$/i.test(emailVal):
+                        this.$email.next().remove();
+                        this.$email.after('<span class="help-inline"><?php _e('Invalid email.'); ?></span>');
+                        this.isEmailValid = false;
+                        this.isValid();
+                        break;
+                    case emailVal == this.emailInitVal:
+                        this.$email.next().remove();
+                        this.$email.after('<span class="help-inline">' + this.options.THAT_IS_YOU + '</span>');
+                        this.isEmailValid = false;
+                        this.isValid();
+                        break;
+                    default:
+                        if (this.checkEmailRequest) {
+                            clearTimeout(this.checkEmailRequest);
+                        }
+                        this.checkEmailRequest = setTimeout($.proxy(function(){
+                            $.getJSON(this.options.checkExistUrl, { 'email': emailVal }, $.proxy(function(result) {
+                                if (result.status) {
+                                    this.$email.next().remove();
+                                    this.$email.after('<span class="help-inline"><?php _e('Email has been used.'); ?></span>');
+                                    this.isEmailValid = false;
+                                    this.isValid();
+                                } else {
+                                    this.$email.next().remove();
+                                    this.isEmailValid = true;
+                                    this.isValid();
+                                }
+                            }, this));
+                        }, this), 400);
+                }
+            },
+
+            nameVerifyAction: function() {
+                var nameVal = $.trim(this.$name.val());
+                switch ( true ) {
+                    case nameVal == '' || /\s/i.test(nameVal):
+                        this.$name.next().remove();
+                        this.$name.after('<span class="help-inline"><?php _e('Invalid display name.'); ?></span>');
+                        this.isNameValid = false;
+                        this.isValid();
+                        break;
+                    case nameVal == this.nameInitVal:
+                        this.$name.next().remove();
+                        this.$name.after('<span class="help-inline">' + this.options.THAT_IS_YOU + '</span>');
+                        this.isNameValid = false;
+                        this.isValid();
+                        break;
+                    default:
+                        if (this.checkNameRequest) {
+                            clearTimeout(this.checkNameRequest);
+                        }
+                        this.checkNameRequest = setTimeout($.proxy(function(){
+                            $.getJSON(this.options.checkExistUrl, { 'name': nameVal }, $.proxy(function(result) {
+                                if (result.status) {
+                                    this.$name.next().remove();
+                                    this.$name.after('<span class="help-inline"><?php _e('Display name has been used.'); ?></span>');
+                                    this.isNameValid = false;
+                                    this.isValid();
+                                } else {
+                                    this.$name.next().remove();
+                                    this.isNameValid = true;
+                                    this.isValid();
+                                }
+                            }, this));
+                        }, this), 400);
+                }
+            },
+
+            isValid: function() {
+                if (this.isEmailValid || this.isNameValid) {
+                    this.$submit.removeClass('disabled').removeAttr('disabled');
+                } else {
+                    this.$submit.addClass('disabled').attr('disabled', 'disabled');
+                }
+            }
+        };
+
+        window.userAccountIndex = userAccountIndex;
+   })(jQuery);
+
+    userAccountIndex.init({
+        accountIndexUrl: '<?php echo $this->url('', array('controller' => 'account', 'action' => 'index')); ?>',
+        checkExistUrl: '<?php echo $this->url('', array('controller' => 'account', 'action' => 'check.exist')); ?>',
+        confirmUrl: '<?php echo $this->url('', array('controller' => 'account', 'action' => 'verify.credential')); ?>',
+        THAT_IS_YOU: '<?php _e('No change!'); ?>'
+    });
+</script>

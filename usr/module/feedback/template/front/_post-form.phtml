@@ -1,0 +1,51 @@
+
+<?php $this->jQuery() ?>
+
+<div id="feedback-post">
+    <h1><?php print $title; ?></h1>
+
+    <?php if (isset($content)) {
+        print('<pre>' . print_r($result, TRUE) . '</pre>');
+        print $content;
+    } ?>
+
+    <?php if (isset($error)) {
+        echo $error;
+    } ?>
+
+    <?php echo $this->form()->openTag($form) ?>
+    <div id="feedback-username">
+    <?php $element = $form->get('username'); ?>
+        <div><?php echo $this->formLabel($element) ?></div>
+        <div><?php
+            echo $this->formElement($element);
+            echo $this->formElementErrors($element); ?>
+        </div>
+    </div>
+
+    <div id="feedback-email">
+    <?php $element = $form->get('email'); ?>
+        <div><?php echo $this->formLabel($element) ?></div>
+        <div><?php
+            echo $this->formElement($element);
+            echo $this->formElementErrors($element); ?>
+        </div>
+    </div>
+
+    <div id="feedback-content">
+    <?php $element = $form->get('content'); ?>
+        <div><?php echo $this->formLabel($element) ?></div>
+        <div><?php
+            echo $this->formElement($element);
+            echo $this->formElementErrors($element); ?>
+        </div>
+    </div>
+
+    <div id="login-login-submit">
+    <?php $element = $form->get('submit'); ?>
+        <div><?php echo $this->formElement($element) ?></div>
+    </div>
+    <?php echo $this->form()->closeTag() ?>
+    <div id="text-message"></div>
+
+</div>

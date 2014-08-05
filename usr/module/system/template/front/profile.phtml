@@ -1,0 +1,11 @@
+
+<div class="span9">
+    <h2 class="page-header"><?php echo _escape($title); ?></h2>
+    <?php echo $avatar; ?>
+    <dl class="dl-horizontal">
+        <?php foreach ($user as $label => $value) { ?>
+            <dt><?php echo $label; ?></dt>
+            <dd><?php echo $value; ?></dd>
+        <?php } ?>
+    </dl>
+</div>

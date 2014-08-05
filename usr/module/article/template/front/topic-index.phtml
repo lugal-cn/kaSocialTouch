@@ -1,0 +1,70 @@
+<?php
+    $this->headTitle($title, 'SET');
+    $this->css(array(
+        $this->assetModule('script/block.css'),
+    ));
+?>
+
+<style>
+    .block-nopadding {
+        padding: 0;
+        margin: 0 0 20px 0;
+    }
+    .article-topic-title {
+        font-size: 17.5px;
+        font-weight: bold;
+        color: #333333;
+    }
+</style>
+<div class="row pi-article-module block-nopadding" style="padding: 10px; background-color: #eeeeee">
+    <div style="float: left; margin: 0 20px 20px 20px">
+        <img src="<?php echo $this->escape($image); ?>">
+    </div>
+    <div>
+        <div class="article-topic-title"><?php echo $this->escape($title); ?></div>
+        <div style="margin-top: 5px; font-size: 12px">
+            <span class="text-muted">
+                <?php echo sprintf(__('Created at %s'), _date($topic['time_create'])); ?>
+            </span>
+            <span class="text-muted" style="margin-left: 10px">
+                <?php echo current($pullTime)
+                    ? sprintf(__('Last added at %s', _date(current($pullTime))))
+                    : '';
+                ?>
+            </span>
+            <span class="pull-right">
+                <a href="<?php echo $this->escape($url); ?>">
+                    <?php echo sprintf('%d articles', $count); ?>
+                </a>
+            </span>
+        </div>
+        <div style="margin-top: 10px; font-size: 12px"><?php echo $content ?></div>
+    </div>
+</div>
+
+<div>
+    <div class="article-list-content" style="margin-top: 10px">
+        <?php foreach ($articles as $row) { ?>
+            <div class="">
+                <a class="topic-list-title" target="_blank" href="<?php echo $this->escape($row['url']); ?>"
+                    title="<?php echo $this->escape($row['subject']); ?>" style="font-weight: bold">
+                        <?php echo $this->escape($row['subject']); ?>
+                </a>
+                <div class="text-muted" style="font-size: 12px">
+                    <span><?php echo sprintf(__('Created at ') . _date($row['time_published'])); ?></span>
+                    <span style="margin-left: 10px">
+                        <?php echo sprintf(__('Last added at ') . _date($pullTime[$row['id']])); ?>
+                    </span>
+                </div>
+                <div style="margin-top: 5px; color: #333333" class="article-size12">
+                    <p><?php echo $this->escape($row['summary']); ?></p>
+                </div>
+            </div>
+            <hr>
+        <?php 
+            }
+        ?>
+    </div>
+</div>
+
+<a class="btn btn-default col-md-12" style="margin-left: 0" href="<?php echo $this->escape($url); ?>"><?php _e('View All'); ?></a>
