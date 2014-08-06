@@ -25,11 +25,11 @@ return array(
     // If URI is a relative one then www root URI will be prepended
     'uri'       => array(
         // WWW root URI
-        'www'       => 'http://pi.local',
+        'www'       => 'http://ka.local',
         // URI to access uploads directory
-        'upload'    => 'http://pi.local/upload',
+        'upload'    => 'http://ka.local/upload',
         // URI to access static files directory
-        'static'    => 'http://pi.local/static',
+        'static'    => 'http://ka.local/static',
     ),
 
     // Paths to resources
@@ -37,35 +37,35 @@ return array(
     'path'      => array(
         // Sharable paths
         // WWW root path, dependent sub folders: `script`, `public`
-        'www'       => '/opt/local/share/nginx/html/pi/www',
+        'www'       => '/opt/local/share/nginx/html/ka/www',
         // Library directory
-        'lib'       => '/opt/local/share/nginx/html/pi/lib',
+        'lib'       => '/opt/local/share/nginx/html/ka/lib',
         // User extension directory
-        'usr'       => '/opt/local/share/nginx/html/pi/usr',
+        'usr'       => '/opt/local/share/nginx/html/ka/usr',
         // Application module directory
-        'module'    => '/opt/local/share/nginx/html/pi/usr/module',
+        'module'    => '/opt/local/share/nginx/html/ka/usr/module',
         // Theme directory
-        'theme'     => '/opt/local/share/nginx/html/pi/usr/theme',
+        'theme'     => '/opt/local/share/nginx/html/ka/usr/theme',
         // Path to static files directory
-        'static'    => '/opt/local/share/nginx/html/pi/www/static',
+        'static'    => '/opt/local/share/nginx/html/ka/www/static',
         // Path to vendor library directory: default as `lib/vendor`
-        'vendor'    => '/opt/local/share/nginx/html/pi/lib/vendor',
+        'vendor'    => '/opt/local/share/nginx/html/ka/lib/vendor',
         // Path to module custom directory: default as `usr/custom`
-        'custom'    => '/opt/local/share/nginx/html/pi/usr/custom',
+        'custom'    => '/opt/local/share/nginx/html/ka/usr/custom',
 
         // Application specific paths
         // Path to uploads directory
-        'upload'    => '/opt/local/share/nginx/html/pi/www/upload',
+        'upload'    => '/opt/local/share/nginx/html/ka/www/upload',
         // User data directory
-        'var'       => '/opt/local/share/nginx/html/pi/var',
+        'var'       => '/opt/local/share/nginx/html/ka/var',
 
         // Sub-paths of var
         // Path to global collective configuration directory
-        'config'    => '/opt/local/share/nginx/html/pi/var/config',
+        'config'    => '/opt/local/share/nginx/html/ka/var/config',
         // Path to cache files directory
-        'cache'     => '/opt/local/share/nginx/html/pi/var/cache',
+        'cache'     => '/opt/local/share/nginx/html/ka/var/cache',
         // Path to logs directory
-        'log'       => '/opt/local/share/nginx/html/pi/var/log',
+        'log'       => '/opt/local/share/nginx/html/ka/var/log',
     ),
 
     // Paths dependent on upper paths

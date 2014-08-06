@@ -14,7 +14,7 @@ return array(
     // Connection configs, to be passed to driver
     'connection'    => array(
         'driver'    => 'pdo',
-        'dsn'       => 'mysql:host=localhost;dbname=pi',
+        'dsn'       => 'mysql:host=localhost;dbname=ka_platform_service',
         'username'  => 'root',
         'password'  => '',
 
@@ -36,9 +36,9 @@ return array(
     ),
 
     // Database schema
-    'schema'        => 'pi',
+    'schema'        => 'ka_platform_service',
     // Prefix for all tables
-    'table_prefix'  => 'p068_',
+    'table_prefix'  => 'p48f_',
     // Prefix for system tables
     // module identifiers will be used for its tables, respectively
     'core_prefix'   => 'core_'

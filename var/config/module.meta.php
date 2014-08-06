@@ -1,5 +1,5 @@
 <?php
-// Generated on 2014-07-14 04:12:48
+// Generated on 2014-08-06 12:09:09
 return array (
   'system' => 
   array (
@@ -16,9 +16,9 @@ return array (
     'directory' => 'widget',
     'active' => 1,
   ),
-  'feedback' => 
+  'search' => 
   array (
-    'directory' => 'feedback',
+    'directory' => 'search',
     'active' => 1,
   ),
 );

@@ -14,10 +14,10 @@
 // For performance consideration it is recommended to be specified
 // if there is only one host;
 // Otherwise it will be automatically looked up in central host specifications
-define('PI_PATH_HOST', '/opt/local/share/nginx/html/pi/var/config/host.php');
+define('PI_PATH_HOST', '/opt/local/share/nginx/html/ka/var/config/host.php');
 
 // Physical path to default library directory WITHOUT trailing slash
-define('PI_PATH_LIB', '/opt/local/share/nginx/html/pi/lib');
+define('PI_PATH_LIB', '/opt/local/share/nginx/html/ka/lib');
 
 // Set default timezone if not available in php.ini
 if (!ini_get('date.timezone')) {
