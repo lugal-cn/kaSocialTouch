@@ -1,0 +1,18 @@
+# Ignore local project settings files.
+.buildpath
+.project
+.settings/*
+
+# Ignore paths that contain user-generated content.
+var/cache/*
+www/asset/*
+www/setup/*
+
+# Ignore settings files.
+www/boot.php
+var/config/engine.php
+var/config/event.listener.php
+var/config/host.php
+var/config/module.meta.php
+var/config/service.database.php
+
